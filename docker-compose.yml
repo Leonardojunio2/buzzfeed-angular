@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    react:
+        container_name: angular
+        build: ./App/
+        volumes:
+            - ./App/:/app
+            - /app/node_modules #Impede que o diretório node_modules/ de dentro do container seja sobreescrito pelo diretório do host local em tempo de execução
+        ports:
+            - '4200:4200'
+            - '49153:49153'
+        stdin_open: true
+        tty: true
+        environment:
+            - CHOKIDAR_USEPOLLING=true
